@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    mongo:
+        image: mongo
+        ports:
+            - "27017:27017"
+            
+    mongo-express:
+        image: mongo-express
+        environment:
+            ME_CONFIG_BASICAUTH_USERNAME: dev
+            ME_CONFIG_BASICAUTH_PASSWORD: dev
+            ME_CONFIG_MONGODB_PORT: 27017
+        ports:
+            - "8081:8081"
+        links:
+            - mongo
